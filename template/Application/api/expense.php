@@ -8,6 +8,7 @@ function registerExpense($con){
     extract($_POST);
     $query    = "call registerExpense('','$amount','$type','$descripton','User12','')";
     $result  = $con->query($query);
+    // check result
     if($result){
         $message = array('status'=>true,'data'=>"Expense Registered Success ");
     }else{
