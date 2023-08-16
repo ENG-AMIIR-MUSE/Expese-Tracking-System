@@ -4,6 +4,7 @@ include('./header.php');
 include('./navbar.php');
 
 ?>
+          
  <div class="pcoded-main-container">
         <div class="pcoded-wrapper">
             <div class="pcoded-content">
@@ -75,10 +76,11 @@ s
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label for="desc">Description</label>
-                     <input type="text" class="form-control">
+                     <input type="text" id="desc" name="description" class="form-control">
                     </div>
                 </div>
             </div>
+
         
       </div>
       <div class="modal-footer">
