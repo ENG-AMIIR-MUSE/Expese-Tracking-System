@@ -23,34 +23,21 @@ s
                                         </div>
                                         <div class="card-block table-border-style">
                                             <div class="table-responsive">
+                                                <button class="btn btn-primary  " id="addNew">add New Transaction</button>
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>First Name</th>
-                                                            <th>Last Name</th>
-                                                            <th>Username</th>
+                                                            <th>Amount</th>
+                                                            <th>Type</th>
+                                                            <th>Description</th>
+                                                            <th>UserId</th>
+                                                            <th>Date</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>@mdo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                       
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -58,6 +45,50 @@ s
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal" tabindex="-1" role="dialog" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="expenseForm">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="amount">Amount</label>
+                      <input type="text"id='amount'name ='amount' class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" name="type" class="form-control">
+                            <option value="income" >Income</option>
+                            <option value="expense">Exepense</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                     <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+       
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
                             <!-- [ Main Content ] end -->
                         </div>
                     </div>
