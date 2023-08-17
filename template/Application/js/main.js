@@ -30,6 +30,7 @@ $('#expenseForm').on('submit',function(event){
         success:function(data){
            let response  = data.data 
            displayMessage("success",response)
+           readTransactions()
      
         },
         error:function(data){
@@ -70,6 +71,7 @@ function displayMessage(type,message){
 
 // read the tranactions 
 function readTransactions(){
+    $("#myTable tbody").html("")
     let sendngData  = {
         "action":"readAllTransaction"
     }
@@ -82,22 +84,31 @@ function readTransactions(){
             console.log("Here is the data form tranaction  :",data)
             let response  = data.data;
             response.forEach((item)=>{
+
+                // halkaan error iga hatto ha ilawin  also 
+
                 tr  = "<tr>"
                for(i in item){
                 if(i == "type"){
+                    console.log(i)
+                    console.log(item[i])
                     //a ustaad shara casil  ui ui ui uilimate rea
                     // safa adsad
-                    if(item[i] == "expense"){
+                    if(item[i] == "income"){
                         
-                     tr+=  "<td class= 'badge badge-danger'> "+ item[i]+  "</td>"
-
-                    }else{
-                tr+=  "<td class='badge badge-success'> "+ item[i]+  "</td>"
+                     tr+=  "<td class= 'badge badge-success '> "+ item[i]+  "</td>"
 
                     }
+                     if(item[i] == "expense"){
+                        
+                     tr+=  "<td class= 'badge badge-danger '> "+ item[i]+  "</td>"
+
+                    }
+                }else{
+
+                    tr+=  "<td> "+ item[i]+  "</td>"
                 }
 
-                tr+=  "<td> "+ item[i]+  "</td>"
 
             }
             tr+=
@@ -109,7 +120,7 @@ function readTransactions(){
            <button class='btn btn-danger delete' deleteInfo = ${item['std_id']}><i class="fa-solid fa-trash"></i></button>
            </td> `
                tr+= "</tr>"
-               console.log("single row ",tr)
+            //    console.log("single row ",tr)
                $('#myTable tbody').append(tr)
             })
         },
