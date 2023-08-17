@@ -1,7 +1,14 @@
 <?php
 include('../config/conn.php');
+header('Content-type:application/json');
 // insert api 
 //
+
+
+if(isset($_POST['action'])){
+
+    $action = $_POST['action'];
+}
 
 function registerExpense($con){
     $message = array();
@@ -16,14 +23,20 @@ function registerExpense($con){
     }
 
     echo json_encode($message);
-}
-
-if(isset($_POST['action'])){
-    $action =  $_POST['action'];
+};
+if($action){
     $action($con);
 }else{
     echo json_encode(array('status'=>false,'data'=>'action required !!'));
+
 }
+// if(isset($action)){
+
+//     $action($con);
+// }else{
+//     echo json_encode(array('action '=>$_POST['action']));
+
+// }
 
 
 ?>
