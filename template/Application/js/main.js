@@ -50,6 +50,7 @@ function displayMessage(type,message){
         success.innerHTML = message
         error.classList = "alert alert-danger d-none "
         $('#modal').hide()
+        $('#expenseForm')[0].reset()
         setTimeout(()=>{
         $('.alert-success').hide()
         },2000)
@@ -58,6 +59,8 @@ function displayMessage(type,message){
         error.innerHTML = message
         success.classList = "alert alert-success d-none "
         $('#modal').hide()
+        $('#expenseForm')[0].reset()
+
         setTimeout(()=>{
             $('.alert-danger').hide()
             },2000)

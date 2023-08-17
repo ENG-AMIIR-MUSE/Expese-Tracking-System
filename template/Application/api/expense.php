@@ -11,19 +11,35 @@ if(isset($_POST['action'])){
 }
 
 function registerExpense($con){
-    $message = array();
+    $data = array();
     extract($_POST);
     $query    = "call registerExpense('','$amount','$type','$descripton','User12','')";
     $result  = $con->query($query);
     // check result
     if($result){
-        $message = array('status'=>true,'data'=>"Expense Registered Success ");
+        $data = array('status'=>true,'data'=>"Expense Registered Success ");
     }else{
-        $message = array('status'=>false,'data'=>$con->error);
+        $data = array('status'=>false,'data'=>$con->error);
     }
 
-    echo json_encode($message);
+    echo json_encode($data);
 };
+
+// read all Trancaction  
+function readAllTransaction($conn){
+    $data  = arraY();
+    $query = "select * from exp ";
+    $result  = $conn->query($query);
+    if($result){
+        while($row  = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+        $data = array('status'=>true, 'data'=>$data);
+    }else{
+        $data  = array('status'=>false, 'data'=>$conn->error);
+    }
+    echo json_encode($data);
+}
 if($action){
     $action($con);
 }else{
