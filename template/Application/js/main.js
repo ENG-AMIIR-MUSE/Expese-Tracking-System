@@ -27,21 +27,40 @@ $('#expenseForm').on('submit',function(event){
         data:data,
 
         success:function(data){
-           alert("data",data)
-           
-        Swal.fire({
-            position: 'top-end',
-            icon: 'TransAction  Registered Success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1500
-        })
+           let response  = data.data 
+           displayMessage("success",response)
            console.log(data)
         },
         error:function(data){
-            alert(data.data)
-           console.log(data)
+           let response  = data.data 
+            displayMessage("error",response)
+           console.log("data erro",data)
 
         }
     })
 })
+
+function displayMessage(type,message){
+    
+    let success  = document.querySelector('.alert-success')
+    let error  = document.querySelector('.alert-danger')
+    console.log(success)
+    if(type == "success"){
+        success.classList = "alert alert-success "
+        success.innerHTML = message
+        error.classList = "alert alert-danger d-none "
+        $('#modal').hide()
+        setTimeout(()=>{
+        $('.alert-success').hide()
+        },2000)
+    }else{
+        error.classList = "alert alert-danger  "
+        error.innerHTML = message
+        success.classList = "alert alert-success d-none "
+        $('#modal').hide()
+        setTimeout(()=>{
+            $('.alert-danger').hide()
+            },2000)
+
+    }
+}

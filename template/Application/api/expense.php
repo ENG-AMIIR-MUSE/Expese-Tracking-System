@@ -30,13 +30,7 @@ if($action){
     echo json_encode(array('status'=>false,'data'=>'action required !!'));
 
 }
-// if(isset($action)){
 
-//     $action($con);
-// }else{
-//     echo json_encode(array('action '=>$_POST['action']));
-
-// }
 
 
 ?>
