@@ -36,7 +36,7 @@ include('./navbar.php');
                                     <div class="card-block table-border-style">
                                         <div class="table-responsive">
                                             <button class="btn btn-primary  " id="addNew">add New Transaction</button>
-                                            <table class="table">
+                                            <table class="table " id="myTable">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
