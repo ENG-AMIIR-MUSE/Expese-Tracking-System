@@ -69,6 +69,12 @@ include('./navbar.php');
                                     <div class="modal-body">
                                         <form id="expenseForm">
                                             <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+   
+                                                        <input type="text"  id='id' name='id' class="form-control d-none">
+                                                    </div>
+                                                </div>
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="amount">Amount</label>
