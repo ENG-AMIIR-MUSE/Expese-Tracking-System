@@ -18,10 +18,10 @@ function registerExpense($con){
     // check result
     if($result){
         $row  = $result->fetch_assoc();
-        if(isset($row['msg'])){
-        $data = array('status'=>false,'data'=>$row['msg']);
+        if(isset($row['message'])){
+        $data = array('status'=>true,'data'=>$row['message']);
         }else{
-            $data = array('status'=>true,'data'=>"Expense Registered Success ");
+            $data = array('status'=>true,'data'=>"message is not exits ");
         }
     }else{
         $data = array('status'=>false,'data'=>$con->error);
@@ -37,10 +37,10 @@ function update($con){
     // check result
     if($result){
         $row  = $result->fetch_assoc();
-        if(isset($row['msg'])){
-        $data = array('status'=>false,'data'=>$row['msg']);
+        if(isset($row['message'])){
+        $data = array('status'=>true,'data'=>$row['message']);
         }else{
-            $data = array('status'=>true,'data'=>"Expense Updated  Success ");
+            $data = array('status'=>true,'data'=>'we dont know the message');
         }
     }else{
         $data = array('status'=>false,'data'=>$con->error);
@@ -82,6 +82,26 @@ function readOneTransaction($conn){
     }
     echo json_encode($data);
 }
+
+function delete($con){
+    $data = array();
+    extract($_POST);
+    $query    = "call registerExpense('$id','' ,'', '', '','','$oper')";
+    $result  = $con->query($query);
+    // check result
+    if($result){
+        $row  = $result->fetch_assoc();
+        if(isset($row['message'])){
+        $data = array('status'=>true,'data'=>$row['message']);
+        }else{
+            $data = array('status'=>false,'data'=>'cant delete');
+        }
+    }else{
+        $data = array('status'=>false,'data'=>$con->error);
+    }
+
+    echo json_encode($data);
+};
 if($action){
     $action($con);
 }else{

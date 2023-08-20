@@ -164,6 +164,36 @@ $('#myTable').on('click', 'a.update', function () {
     loadOneTransAction(id)
     $('#modal').show()
 })
+
+$("#myTable").on('click','a.delete',function(){
+    let id  = $(this).attr('deleteInfo');
+    console.log("id",id)
+    deleteRecord(id)
+
+})
+function deleteRecord(id){
+    let sendingData  = {
+        id:id,
+        oper:'delete',
+        action:'delete'
+    }
+    $.ajax({
+        method:'POST',
+        url:'../api/expense.php',
+        dataType:'JSON',
+        data:sendingData,
+        success:function(data){
+            displayMessage(data.data)
+                readTransactions()
+
+            
+        },
+        error:function(data){
+            displayMessage(data.data)
+        }
+    })
+
+}
 function loadOneTransAction(id) {
 
     let sendingData = {
