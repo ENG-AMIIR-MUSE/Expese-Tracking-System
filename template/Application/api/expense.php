@@ -86,7 +86,8 @@ function readOneTransaction($conn){
 function delete($con){
     $data = array();
     extract($_POST);
-    $query    = "call registerExpense('$id','' ,'', '', '','','$oper')";
+    $query    = "call registerExpense('$id','
+    ' ,'', '', '','','$oper')";
     $result  = $con->query($query);
     // check result
     if($result){
@@ -102,6 +103,23 @@ function delete($con){
 
     echo json_encode($data);
 };
+
+// get user Statement
+function getUserStatement($conn){
+    $data  = arraY();
+    extract($_POST);
+    $query = "CALL getUserStatement('user1','$from','$to')";
+    $result  = $conn->query($query);
+    if($result){
+        while($row  = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+        $data = array('status'=>true, 'data'=>$data);
+    }else{
+        $data  = array('status'=>false, 'data'=>$conn->error);
+    }
+    echo json_encode($data);
+}
 if($action){
     $action($con);
 }else{
