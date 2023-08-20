@@ -34,17 +34,49 @@ include('./navbar.php');
                                         <span class="d-block m-t-5">use class <code>table</code> inside table element</span>
                                     </div>
                                     <div class="card-block table-border-style">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="">Statement Type</label>
+                                                    <select id="" class="form-control">
+                                                        <option value="all">All</option>
+                                                        <option value="Custom">Custom</option>
+                                                    </select>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="">From</label>
+                                                        <input type="date" class='form-control'>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="">To</label>
+                                                        <input type="date" class='form-control'>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                         <div class="table-responsive">
-                                            <button class="btn btn-primary  " id="addNew">add New Transaction</button>
+                                            <button class="btn btn-primary  " id="addNew">show Statment</button>
                                             <table class="table " id="myTable">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Amount</th>
-                                                        <th>Type</th>
-                                                        <th>Description</th>
-                                                        <th>UserId</th>
                                                         <th>Date</th>
+                                                        <th>User</th>
+                                                        <th>Income</th>
+                                                        <th>Exepense</th>
+                                                        <th>Balance</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -69,10 +101,10 @@ include('./navbar.php');
                                     <div class="modal-body">
                                         <form id="expenseForm">
                                             <div class="row">
-                                            <div class="col-sm-12">
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
-   
-                                                        <input type="text"  id='id' name='id' class="form-control d-none">
+
+                                                        <input type="text" id='id' name='id' class="form-control d-none">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
@@ -119,9 +151,6 @@ include('./navbar.php');
 
 
 <?php
-// <script src="../js/main.js"></script>
-
 include('./footer.php');
 ?>
-
-<script src="../js/main.js"></script>
+<script src="../js/userStatemtn.js"></script>
