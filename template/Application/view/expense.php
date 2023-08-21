@@ -119,5 +119,9 @@ include('./navbar.php');
 
 
 <?php
+// <script src="../js/main.js"></script>
+
 include('./footer.php');
 ?>
+
+<script src="../js/main.js"></script>
