@@ -67,15 +67,7 @@ include('./navbar.php');
 
                                             <table class="table " id="myTable">
                                                 <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Date</th>
-                                                        <th>User</th>
-                                                        <th>Income</th>
-                                                        <th>Exepense</th>
-                                                        <th>Balance</th>
-                                                        <th>Action</th>
-                                                    </tr>
+                                                    
                                                 </thead>
                                                 <tbody>
 
