@@ -16,7 +16,11 @@ $('#type').on('change',function(){
 })
 
 $('#statement').on('submit',function(event){
+
     event.preventDefault()
+    console.log("submited")
+    $('.table thead').html('')
+    $('.table tbody').html('')
    let from  =  $('#from').val()
    let to =  $('#to').val()
     $('#to').attr('disabled',true)
@@ -33,34 +37,65 @@ $('#statement').on('submit',function(event){
         data:sendingData,
      
         success: function (data) {
-            // console.log("Here is the data form tranaction  :", data)
             let response = data.data;
-            // console.log("transaction data  :", data)
+            let tr =''
+            let th  = ''
             response.forEach((item) => {
-                tr = "<tr>"
+                th   = "<tr>"
+                for (i in item) {
+                    th += `<th> ${i}</th>`
+                }
+                th += "</tr>"
+                tr += "<tr>"
                 for (i in item) {
                     tr += "<td> " + item[i] + "</td>"
-                
-
-
                 }
-                tr +=
-                    ` <td>
-           <a class='btn btn-primary text-white  update' updateInfo = ${item['id']}><i class="fa-solid fa-pen-to-square"></i></a>
-           </td> `
-                tr +=
-                    ` <td>
-           <a class='btn btn-danger text-white delete' deleteInfo = ${item['id']}><i class="fa-solid fa-trash"></i></a>
-           </td> `
-
                 tr += "</tr>"
                 //    console.log("single row ",tr)
-                $('#statement tbody').append(tr)
             })
+            $('.table thead').append(th)
+            $('.table tbody').append(tr)
         },
         erro:function(data){
             console.log(data)
         }
     })
-    
 })
+$('#print').on('click',function(){
+   print()
+})
+function print(){
+    let newWindow = window.open("");
+    let pirntArea  = document.querySelector('#print_area')
+    newWindow.document.write(`<html><head><title>Print report </title>`);
+    newWindow.document.write(`<style media="print">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+    body{
+        font-family: 'Poppins', sans-serif;
+    }
+    table{
+        width:100%
+    }
+    thead,th{
+        padding:10px;
+       background-color:blue !important;
+      
+       
+    }
+     th , td{
+        padding:10px !important;
+        text-align:left !important;
+        
+    }
+    th,td{
+        border-bottom:1px solid gray !important;
+       
+    }
+    </style>`)
+    newWindow.document.write('</head><body>')
+    newWindow.document.write(pirntArea.innerHTML)
+    newWindow.document.write(`</body></html>`)
+
+    newWindow.print()
+    newWindow.close()
+}
