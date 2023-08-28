@@ -28,7 +28,7 @@ include('./navbar.php');
                                         <span class="d-block m-t-5">use class <code>table</code> inside table element</span>
                                     </div>
                                     <div class="card-block table-border-style">
-                                        <form id="statement" >
+                                        <form id="statement">
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <div class="form-group">
@@ -59,22 +59,36 @@ include('./navbar.php');
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-12">
+
+                                                <button class="btn btn-primary " type="submit" id="addNew">show Statment</button>
+                                            </div>
+                                     
 
                                         </div>
-                                        <div class="table-responsive">
-                                            <button class="btn btn-primary  " id="addNew">show Statment</button>
                                         </form>
+                                    
 
+                                        <div class="table-responsive" id="print_area">
+                                            <!-- <button class="btn btn-primary " type="submit" id="addNew">show Statment</button> -->
                                             <table class="table " id="myTable">
                                                 <thead>
                                                     
-                                                </thead>
-                                                <tbody>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row">
+                                        <div class="col-sm-12">
+                                        <button class="btn btn-success " id="print">Print </button>
+                                        <button class="btn btn-primary " id="export">Export</button>
 
-                                                </tbody>
-                                            </table>
+
+                                       </div>
                                         </div>
-                                    </div>
+                                            </div>
                                 </div>
                             </div>
                         </div>

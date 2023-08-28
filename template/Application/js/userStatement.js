@@ -16,9 +16,11 @@ $('#type').on('change',function(){
 })
 
 $('#statement').on('submit',function(event){
+
     event.preventDefault()
-    $('#statement thead').html('')
-    $('#statement tbody').html('')
+    console.log("submited")
+    $('.table thead').html('')
+    $('.table tbody').html('')
    let from  =  $('#from').val()
    let to =  $('#to').val()
     $('#to').attr('disabled',true)
@@ -51,11 +53,49 @@ $('#statement').on('submit',function(event){
                 tr += "</tr>"
                 //    console.log("single row ",tr)
             })
-            $('#statement thead').append(th)
-            $('#statement tbody').append(tr)
+            $('.table thead').append(th)
+            $('.table tbody').append(tr)
         },
         erro:function(data){
             console.log(data)
         }
     })
 })
+$('#print').on('click',function(){
+   print()
+})
+function print(){
+    let newWindow = window.open("");
+    let pirntArea  = document.querySelector('#print_area')
+    newWindow.document.write(`<html><head><title>Print report </title>`);
+    newWindow.document.write(`<style media="print">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+    body{
+        font-family: 'Poppins', sans-serif;
+    }
+    table{
+        width:100%
+    }
+    thead,th{
+        padding:10px;
+       background-color:blue !important;
+      
+       
+    }
+     th , td{
+        padding:10px !important;
+        text-align:left !important;
+        
+    }
+    th,td{
+        border-bottom:1px solid gray !important;
+       
+    }
+    </style>`)
+    newWindow.document.write('</head><body>')
+    newWindow.document.write(pirntArea.innerHTML)
+    newWindow.document.write(`</body></html>`)
+
+    newWindow.print()
+    newWindow.close()
+}
